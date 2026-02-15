@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morocco - Kingdom of Light</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Cinzel:wght@400;600;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --flag-red: #C1272D;
+            --deep-red: #8B1A1F;
+            --flag-green: #006233;
+            --deep-green: #004225;
+            --light-green: #0A7A4A;
+            --gold-accent: #D4A574;
+            --cream: #FDFBF7;
+            --ivory: #F5F3EF;
+            --charcoal: #2C2C2C;
+            --silver: #A8A8A8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--ivory) 100%);
+            color: var(--charcoal);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(193, 39, 45, 0.02) 35px, rgba(193, 39, 45, 0.02) 70px),
+                repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(0, 98, 51, 0.02) 35px, rgba(0, 98, 51, 0.02) 70px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header */
+        header {
+            padding: 4rem 0 3rem;
+            text-align: center;
+            position: relative;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            color: var(--flag-red);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--flag-green);
+            font-weight: 300;
+            letter-spacing: 0.15em;
+            font-style: italic;
+        }
+
+        /* Morocco Overview Card */
+        .overview-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 243, 239, 0.95) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            border: 2px solid var(--gold-accent);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+        }
+
+        .overview-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(193, 39, 45, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .overview-card::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 98, 51, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .overview-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .overview-card h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--flag-red);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            letter-spacing: 0.05em;
+        }
+
+        .overview-description {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            margin-bottom: 2rem;
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(193, 39, 45, 0.15);
+            border-color: var(--flag-green);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stat-value {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--flag-red);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--flag-green);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 400;
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin: 5rem 0 3rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--deep-green);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .section-divider {
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--flag-green), var(--flag-red), var(--flag-green));
+            margin: 1rem auto;
+        }
+
+        /* Cities Grid */
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .city-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(253, 251, 247, 0.95) 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .city-card:nth-child(1) { animation-delay: 0.1s; }
+        .city-card:nth-child(2) { animation-delay: 0.2s; }
+        .city-card:nth-child(3) { animation-delay: 0.3s; }
+        .city-card:nth-child(4) { animation-delay: 0.4s; }
+        .city-card:nth-child(5) { animation-delay: 0.5s; }
+        .city-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .city-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--flag-red), var(--flag-green));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .city-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border-color: var(--flag-green);
+        }
+
+        .city-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .city-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(212, 165, 116, 0.3);
+            padding-bottom: 1rem;
+        }
+
+        .city-name {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--flag-red);
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .city-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--deep-green);
+            font-style: italic;
+        }
+
+        .city-description {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+        }
+
+        .city-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .city-stat {
+            background: rgba(245, 243, 239, 0.5);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--flag-red);
+            transition: all 0.3s ease;
+        }
+
+        .city-stat:hover {
+            background: rgba(245, 243, 239, 0.8);
+            transform: translateX(5px);
+        }
+
+        .city-stat-label {
+            font-size: 0.85rem;
+            color: var(--flag-green);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.3rem;
+        }
+
+        .city-stat-value {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--flag-red);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 2px solid rgba(212, 165, 116, 0.3);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        footer p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--deep-green);
+            font-style: italic;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .overview-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .cities-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .city-card {
+                padding: 1.5rem;
+            }
+
+            .city-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .overview-card h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MOROCCO</h1>
+            <p class="subtitle">Kingdom of Light & Heritage</p>
+        </header>
+
+        <div class="overview-card">
+            <div class="overview-content">
+                <h2>The Gateway Between Worlds</h2>
+                <p class="overview-description">
+                    Nestled at the crossroads of Europe and Africa, Morocco is a land where ancient traditions meet modern aspirations. 
+                    From the snow-capped Atlas Mountains to the golden Sahara dunes, from bustling medinas to pristine Atlantic shores, 
+                    this North African kingdom enchants with its rich tapestry of Berber, Arab, and European influences.
+                </p>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-icon">👥</span>
+                        <span class="stat-value">37.8M</span>
+                        <span class="stat-label">Population</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">🗺️</span>
+                        <span class="stat-value">710,850</span>
+                        <span class="stat-label">Area (km²)</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">🏛️</span>
+                        <span class="stat-value">Rabat</span>
+                        <span class="stat-label">Capital City</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">💬</span>
+                        <span class="stat-value">Arabic</span>
+                        <span class="stat-label">Official Language</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">💰</span>
+                        <span class="stat-value">MAD</span>
+                        <span class="stat-label">Currency (Dirham)</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">⛰️</span>
+                        <span class="stat-value">4,167m</span>
+                        <span class="stat-label">Highest Peak</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2>Major Cities</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="cities-grid">
+            <div class="city-card">
+                <div class="city-header">
+                    <h3 class="city-name">Casablanca</h3>
+                    <p class="city-subtitle">Economic Powerhouse</p>
+                </div>
+                <p class="city-description">
+                    Morocco's largest city and economic heart, Casablanca pulses with modern energy while maintaining its historical charm. 
+                    Home to the iconic Hassan II Mosque and Africa's busiest port.
+                </p>
+                <div class="city-stats">
+                    <div class="city-stat">
+                        <div class="city-stat-label">Population</div>
+                        <div class="city-stat-value">3.75M</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Area</div>
+                        <div class="city-stat-value">220 km²</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Elevation</div>
+                        <div class="city-stat-value">50m</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Founded</div>
+                        <div class="city-stat-value">1515</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <div class="city-header">
+                    <h3 class="city-name">Rabat</h3>
+                    <p class="city-subtitle">Imperial Capital</p>
+                </div>
+                <p class="city-description">
+                    The political capital and royal residence, Rabat seamlessly blends medieval fortifications with contemporary government buildings. 
+                    A UNESCO World Heritage site showcasing Morocco's architectural splendor.
+                </p>
+                <div class="city-stats">
+                    <div class="city-stat">
+                        <div class="city-stat-label">Population</div>
+                        <div class="city-stat-value">1.93M</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Area</div>
+                        <div class="city-stat-value">118 km²</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Elevation</div>
+                        <div class="city-stat-value">135m</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Founded</div>
+                        <div class="city-stat-value">1150</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <div class="city-header">
+                    <h3 class="city-name">Marrakech</h3>
+                    <p class="city-subtitle">The Red City</p>
+                </div>
+                <p class="city-description">
+                    A mesmerizing fusion of souks, palaces, and gardens, Marrakech captivates visitors with its ochre-red buildings and 
+                    vibrant Jemaa el-Fnaa square. The beating heart of Moroccan culture and tourism.
+                </p>
+                <div class="city-stats">
+                    <div class="city-stat">
+                        <div class="city-stat-label">Population</div>
+                        <div class="city-stat-value">1.33M</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Area</div>
+                        <div class="city-stat-value">230 km²</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Elevation</div>
+                        <div class="city-stat-value">466m</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Founded</div>
+                        <div class="city-stat-value">1062</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <div class="city-header">
+                    <h3 class="city-name">Fes</h3>
+                    <p class="city-subtitle">Spiritual Capital</p>
+                </div>
+                <p class="city-description">
+                    Home to the world's oldest continuously operating university, Fes preserves medieval Islamic architecture within its 
+                    walled medina. A living museum where artisans practice crafts unchanged for centuries.
+                </p>
+                <div class="city-stats">
+                    <div class="city-stat">
+                        <div class="city-stat-label">Population</div>
+                        <div class="city-stat-value">1.27M</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Area</div>
+                        <div class="city-stat-value">320 km²</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Elevation</div>
+                        <div class="city-stat-value">406m</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Founded</div>
+                        <div class="city-stat-value">789</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <div class="city-header">
+                    <h3 class="city-name">Tangier</h3>
+                    <p class="city-subtitle">Gateway to Africa</p>
+                </div>
+                <p class="city-description">
+                    Perched at the Strait of Gibraltar, Tangier has served as a crossroads of civilizations for millennia. 
+                    This cosmopolitan port city bridges continents with its unique Mediterranean-Atlantic character.
+                </p>
+                <div class="city-stats">
+                    <div class="city-stat">
+                        <div class="city-stat-label">Population</div>
+                        <div class="city-stat-value">1.07M</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Area</div>
+                        <div class="city-stat-value">124 km²</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Elevation</div>
+                        <div class="city-stat-value">20m</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Founded</div>
+                        <div class="city-stat-value">5th c. BC</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="city-card">
+                <div class="city-header">
+                    <h3 class="city-name">Agadir</h3>
+                    <p class="city-subtitle">Coastal Paradise</p>
+                </div>
+                <p class="city-description">
+                    Rebuilt after a devastating 1960 earthquake, modern Agadir offers sun-soaked beaches and a relaxed atmosphere. 
+                    Morocco's premier beach resort destination with year-round sunshine.
+                </p>
+                <div class="city-stats">
+                    <div class="city-stat">
+                        <div class="city-stat-label">Population</div>
+                        <div class="city-stat-value">924K</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Area</div>
+                        <div class="city-stat-value">205 km²</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Elevation</div>
+                        <div class="city-stat-value">27m</div>
+                    </div>
+                    <div class="city-stat">
+                        <div class="city-stat-label">Rebuilt</div>
+                        <div class="city-stat-value">1960</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>"In Morocco, you will find the soul of the world in every corner, the wisdom of ages in every stone."</p>
+        </footer>
+    </div>
+</body>
+</html>
